@@ -108,6 +108,7 @@ function returnUpload() {
 
 // error
 function showerror(msg) {
+  document.getElementById("upload").style.display = "none";
   document.getElementById("error").style.display = "inline";
   document.getElementById('errormsg').innerHTML = msg;
 } 
