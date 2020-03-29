@@ -51,7 +51,7 @@ function sbvTransfer() {
             var speaker = txt[0].split('&')
             ytt += `\n`
             for (var ii = 0; ii < speaker.length; ii++) {
-              if (typeof(colour[speaker]) == "undefined") {c=0} else {c=colour[speaker]}
+              if (typeof(colour[speaker[ii]]) == "undefined") {c=0} else {c=colour[speaker[ii]]}
               if (ii < speaker.length-1) {ytt += `<s p="${c}">${speaker[ii]}</s>&`}
               else {ytt += `<s p="${c}">${speaker[ii]}</s>`}
             }
