@@ -65,7 +65,7 @@ If you want to download the file of speaker colour setting, click  `save` button
 ##### Step3
 Click `Convert` at the end of the page. The `.ytt` file will download.
 
-###How to use for Youtube CC
+### How to use for Youtube CC
 ##### Step1
 Download subtitle file with sbv file format on Youtube.
 ![](https://martin605.github.io/Subtitle-Speaker-Colour-Convertor/img/step1.png)
