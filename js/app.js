@@ -6,8 +6,7 @@ function onLoad() {
   returnUpload()
   var lang = navigator.language || navigator.userLanguage; 
   document.querySelector('#colorupload').addEventListener('change', (e) => {
-  loadJSON();
-});
+  loadJSON();});
 }
 
 function sbvTransfer() {
@@ -121,9 +120,7 @@ function listFloat(list) {
 }
 
 function loadJSON() {
-  var colourNameList = document.getElementsByClassName("colourName");
-  for (var i = 0; i < colourNameList.length; i++) {
-  removeColour(`"colour${i}`)}
+  removeAllColour();
   let fileToLoad = document.getElementById("colorupload").files[0];
   let fileReader = new FileReader();
   fileReader.onload = function (fileLoadedEvent) {
@@ -137,9 +134,17 @@ function loadJSON() {
   fileReader.readAsText(fileToLoad, "UTF-8");
 }
 
+function removeAllColour(){
+  var colourNameList1 = document.getElementsByClassName("colourName");
+  for (var i = colourNameList1.length; i--;) {
+    console.log(i);
+    removeColour(i);
+  }
+}
+
 function addNewColour(){
-  var colourNameList = document.getElementsByClassName("colourName");
-  addColour(`Speaker${colourNameList.length}`,"FFFFFF")
+  var colourNameList2 = document.getElementsByClassName("colourName");
+  addColour(`Speaker${colourNameList2.length}`,"FFFFFF")
 }
 
 function colourListTxt(i,colourName,colourCode){
@@ -147,7 +152,7 @@ function colourListTxt(i,colourName,colourCode){
   <div class="input-group col-10">
     <input type="text" id="colourName${i}" class="colourName form-control" placeholder="Name" aria-describedby="inputGroupPrepend" value="${colourName}" required>
     &nbsp;&nbsp;
-    <div class="input-group-prepend"><span class="input-group-text" id="inputGroupPrepend">#</span></div>
+    <div id="colourPreview${i}" class="input-group-prepend"><span class="input-group-text" id="inputGroupPrepend">#</span></div>
     <input type="text" id="colourCode${i}" class="colourCode form-control" value="${colourCode}" aria-describedby="inputGroupPrepend" pattern="^[A-Fa-f0-9]{6}$" required>
     &nbsp;&nbsp;
     <a class="btn btn-danger btn" onclick="removeColour(${i})" href="#" role="button"><span class="material-icons">delete</span></a>
@@ -156,14 +161,19 @@ function colourListTxt(i,colourName,colourCode){
 }
 
 function addColour(colourName,colourCode) {
-  var colourNameList = document.getElementsByClassName("colourName");
+  var colourNameList3 = document.getElementsByClassName("colourName");
   var colourCodeList = document.getElementsByClassName("colourCode");
   var ctxt = ""
-  for (var i = 0; i < colourNameList.length; i++) {
-    ctxt += colourListTxt(i,colourNameList[i].value,colourCodeList[i].value)
+  for (var i = 0; i < colourNameList3.length; i++) {
+    ctxt += colourListTxt(i,colourNameList3[i].value,colourCodeList[i].value)
   }
-  ctxt += colourListTxt(colourNameList.length,colourName,colourCode)
+  ctxt += colourListTxt(colourNameList3.length,colourName,colourCode)
   document.getElementById("colourList").innerHTML = ctxt
+  var colorCode = document.getElementsByClassName("colourCode");
+  // for (var i = 0; i < colorCode.length; i++) {
+  //   colorCode[i].addEventListener('click', (e) => {
+  //     document.getElementById(`colourPreview${i}`).style.color = document.getElementById(this.id).value});
+  // };
 }
 
 function removeColour(id) {
@@ -172,10 +182,10 @@ function removeColour(id) {
 
 function saveJSON() {
   let colourJson = {};
-  var colourNameList = document.getElementsByClassName("colourName");
+  var colourNameList4 = document.getElementsByClassName("colourName");
   var colourCodeList = document.getElementsByClassName("colourCode");
-  for (var i = 0; i < colourNameList.length; i++) {
-    colourJson[colourNameList[i].value] = colourCodeList[i].value;}
+  for (var i = 0; i < colourNameList4.length; i++) {
+    colourJson[colourNameList4[i].value] = colourCodeList[i].value;}
   let blob = new Blob([JSON.stringify(colourJson)], {type: "text/plain;charset=utf-8"});
   saveAs(blob, "colour.json");
 }

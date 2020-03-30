@@ -14,6 +14,8 @@ pre {
     background-color: #e6e6e6;
     overflow: hidden;
 }
+
 .circle {
     border-radius: 20px;
+    width: 40px;
 }
