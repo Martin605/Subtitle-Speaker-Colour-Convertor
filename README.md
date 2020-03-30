@@ -64,6 +64,8 @@ If success, the speaker colour setting will auto show. If you cannot see the spe
 If you want to download the file of speaker colour setting, click  `save` button next to *load* button.
 ##### Step3
 Click `Convert` at the end of the page. The `.ytt` file will download.
+The subtitle colour will not show in YouTube subtitle editor, but it will show after you publish it.
+The subtitle colour will disappear after using YouTube subtitle editor to edit the subtitle.
 
 ### How to use for Youtube CC
 ##### Step1
