@@ -9,78 +9,135 @@ function onLoad() {
   loadJSON();});
 }
 
-function sbvTransfer() {
-  try {
+//// Preview
+function preview() {
+  let yttPreview = '<table class="table table-dark"><thead><tr><th scope="col">Time(sbv)</th><th scope="col">Time(ytt)</th><th scope="col">Subtitle</th></tr></thead><tbody>'
   var sbvFiles = document.getElementById("sbvupload").files;
   if (!sbvFiles.length || sbvFiles[0].name.match('.sbv')) {
     document.getElementById("form").classList.add("was-validated");
   }
-  let sbv = "";
-  let colour = {};
-  ytt = '<?xml version="1.0" encoding="utf-8"?>\n<timedtext format="3">\n<head>\n<wp id="0" ap="7" ah="50" av="100" />\n<ws id="0" ju="2" pd="0" sd="0" />\n<pen id="0" sz="120" fc="#FEFEFE" fo="254" bo="0" et="3" ec="#000000" />';
-  var sbvTime =[];
-  const reader = new FileReader();
-  var colourNameList = document.getElementsByClassName("colourName");
-  var colourCodeList = document.getElementsByClassName("colourCode");
-  for (var i = 0; i < colourNameList.length; i++) {
-    ytt += `<pen id="${i+1}" sz="120" fc="#${colourCodeList[i].value.toUpperCase()}" fo="254" bo="0" et="3" ec="#000000" />\n`
-    colour[`${colourNameList[i].value}`] = i+1
-  }
-  const sbvreader = new FileReader();
-  sbvreader.onload = function (e) {
-    sbv = e.target.result.split("\n");
-    ytt += "</head><body>"
-    for (var i = 0; i < sbv.length; i++) {
-      if (sbv[i].match(/.*:.*:.*,.*:.*:.*/)) {
-        sbvTime = sbv[i].split(",");
-        var t = listFloat(sbvTime[0].split(":"));
-        t = parseInt(((t[0]*60+t[1])*60+t[2])*1000);
-        if ( t==0 ) {t=1};
-        var d = listFloat(sbvTime[1].split(":"));
-        d = parseInt(((d[0]*60+d[1])*60+d[2])*1000 - t);
-        ytt += `<p t="${t}" d="${d}" p="0" wp="0" ws="0">`
-      } else if (sbv[i].length == 1 | sbv[i] == "") {
-        ytt += "</p>\n"
-      } else {
-        var txt = [];
-        if (sbv[i].match(/.*[:|\uff1a].*/)) {
-          txt = sbv[i].split(/:|\uff1a/,2)
-          if (txt[0].match('&')) {
-            var speaker = txt[0].split('&')
-            ytt += `\n`
-            for (var ii = 0; ii < speaker.length; ii++) {
-              if (typeof(colour[speaker[ii]]) == "undefined") {c=0} else {c=colour[speaker[ii]]}
-              if (ii < speaker.length-1) {ytt += `<s p="${c}">${speaker[ii]}</s>&`}
-              else {ytt += `<s p="${c}">${speaker[ii]}</s>`}
-            }
-            ytt += `\uff1a${txt[1]}`
-          } else {
-            if (typeof(colour[txt[0]]) == "undefined") {c=0} else {c=colour[txt[0]]}
-            ytt += `\n<s p="${c}">${sbv[i]}</s>`
-          }
+  try {
+    let sbv = "";
+    let colour = {};
+    colour['default'] = '#FEFEFE';
+    var sbvTime =[];
+    const reader = new FileReader();
+    var colourNameList = document.getElementsByClassName("colourName");
+    var colourCodeList = document.getElementsByClassName("colourCode");
+    for (var i = 0; i < colourNameList.length; i++) {
+      colour[`${colourNameList[i].value}`] = `#${colourCodeList[i].value.toUpperCase()}`
+    }
+    const sbvreader = new FileReader();
+    sbvreader.onload = function (e) {
+      sbv = e.target.result.split("\n");
+      for (var i = 0; i < sbv.length; i++) {
+        if (sbv[i].match(/.*:.*:.*,.*:.*:.*/)) {
+          sbvTime = sbv[i].split(",");
+          var t = listFloat(sbvTime[0].split(":"));
+          t = parseInt(((t[0]*60+t[1])*60+t[2])*1000);
+          if ( t==0 ) {t=1};
+          var d = listFloat(sbvTime[1].split(":"));
+          d = parseInt(((d[0]*60+d[1])*60+d[2])*1000 - t);
+          yttPreview += `<tr><th scope="row">${sbv[i]}</th><td>t="${t}" d="${d}"</td><td>`
+        } else if (sbv[i].length == 1 | sbv[i] == "") {
+          yttPreview += "</td></tr>"
         } else {
-          ytt += `\n<s p="0">${sbv[i]}</s>`
+          var txt = [];
+          if (sbv[i].match(/.*[:|\uff1a].*/)) {
+            txt = sbv[i].split(/:|\uff1a/,2)
+            if (txt[0].match('&')) {
+              var speaker = txt[0].split(/,|&|\u3001/)
+              yttPreview += `<br>`
+              for (var ii = 0; ii < speaker.length; ii++) {
+                if (typeof(colour[speaker[ii]]) == "undefined") {c=0} else {c=colour[speaker[ii]]}
+                if (ii < speaker.length-1) {yttPreview += `<span style="color:${c};">${speaker[ii]}</span>&`}
+                else {yttPreview += `<span style="color:${c};">${speaker[ii]}</span>`}
+              }
+              yttPreview += `\uff1a${txt[1]}`
+            } else {
+              if (typeof(colour[txt[0]]) == "undefined") {c=colour["default"]} else {c=colour[txt[0]]}
+              yttPreview += `<br><span style="color:${c};">${sbv[i]}</span>`
+            }
+          } else {
+            yttPreview += `<br><span style="color:${colour["default"]};">${sbv[i]}</span>`
+          }
         }
       }
-    }
-    ytt += "</body></timedtext>"
-    let blob = new Blob([ytt], {type: "text/plain;charset=utf-8"});
-    saveAs(blob, "subtitle.ytt");
-  };
-  sbvreader.readAsText(sbvFiles[0]);
-  } catch(e) {
-  showerror("Error")
+      yttPreview+='</tbody></table>'
+      document.getElementById("preview").style.display = "inline";
+      document.getElementById("previewTitle").style.display = "inline";
+      document.getElementById("preview").innerHTML = yttPreview.split('<td><br>').join('<td>');
+    };
+    sbvreader.readAsText(sbvFiles[0]);
+    } catch(e) {
+    showerror("Error")
   }
-}
-
-//// Preview
-function preview() {
-  document.getElementById("preview").style.display = "inline";
+  
 }
 
 //// Upload
 function upload() {
-  sbvTransfer()
+  var sbvFiles = document.getElementById("sbvupload").files;
+  if (!sbvFiles.length || sbvFiles[0].name.match('.sbv')) {
+    document.getElementById("form").classList.add("was-validated");
+  }
+  try {
+    let sbv = "";
+    let colour = {};
+    ytt = '<?xml version="1.0" encoding="utf-8"?>\n<timedtext format="3">\n<head>\n<wp id="0" ap="7" ah="50" av="100" />\n<ws id="0" ju="2" pd="0" sd="0" />\n<pen id="0" sz="120" fc="#FEFEFE" fo="254" bo="0" et="3" ec="#000000" />';
+    var sbvTime =[];
+    const reader = new FileReader();
+    var colourNameList = document.getElementsByClassName("colourName");
+    var colourCodeList = document.getElementsByClassName("colourCode");
+    for (var i = 0; i < colourNameList.length; i++) {
+      ytt += `<pen id="${i+1}" sz="120" fc="#${colourCodeList[i].value.toUpperCase()}" fo="254" bo="0" et="3" ec="#000000" />\n`
+      colour[`${colourNameList[i].value}`] = i+1
+    }
+    const sbvreader = new FileReader();
+    sbvreader.onload = function (e) {
+      sbv = e.target.result.split("\n");
+      ytt += "</head><body>"
+      for (var i = 0; i < sbv.length; i++) {
+        if (sbv[i].match(/.*:.*:.*,.*:.*:.*/)) {
+          sbvTime = sbv[i].split(",");
+          var t = listFloat(sbvTime[0].split(":"));
+          t = parseInt(((t[0]*60+t[1])*60+t[2])*1000);
+          if ( t==0 ) {t=1};
+          var d = listFloat(sbvTime[1].split(":"));
+          d = parseInt(((d[0]*60+d[1])*60+d[2])*1000 - t);
+          ytt += `<p t="${t}" d="${d}" p="0" wp="0" ws="0">`
+        } else if (sbv[i].length == 1 | sbv[i] == "") {
+          ytt += "</p>\n"
+        } else {
+          var txt = [];
+          if (sbv[i].match(/.*[:|\uff1a].*/)) {
+            txt = sbv[i].split(/:|\uff1a/,2)
+            if (txt[0].match('&')) {
+              var speaker = txt[0].split('&')
+              ytt += `\n`
+              for (var ii = 0; ii < speaker.length; ii++) {
+                if (typeof(colour[speaker[ii]]) == "undefined") {c=0} else {c=colour[speaker[ii]]}
+                if (ii < speaker.length-1) {ytt += `<s p="${c}">${speaker[ii]}</s>&`}
+                else {ytt += `<s p="${c}">${speaker[ii]}</s>`}
+              }
+              ytt += `\uff1a${txt[1]}`
+            } else {
+              if (typeof(colour[txt[0]]) == "undefined") {c=0} else {c=colour[txt[0]]}
+              ytt += `\n<s p="${c}">${sbv[i]}</s>`
+            }
+          } else {
+            ytt += `\n<s p="0">${sbv[i]}</s>`
+          }
+        }
+      }
+      ytt += "</body></timedtext>"
+      let blob = new Blob([ytt], {type: "text/plain;charset=utf-8"});
+      saveAs(blob, "subtitle.ytt");
+    };
+    sbvreader.readAsText(sbvFiles[0]);
+    } catch(e) {
+    showerror("Error")
+  }
 }
 
 //// Download
@@ -101,6 +158,7 @@ function returnButton() {
 function returnUpload() {
   document.getElementById("error").style.display = "none";
   document.getElementById("upload").style.display = "inline";
+  document.getElementById("previewTitle").style.display = "none";
   document.getElementById("returnButton").style.display = "none";
 }
 

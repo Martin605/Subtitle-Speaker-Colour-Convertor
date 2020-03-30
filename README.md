@@ -17,7 +17,7 @@
 
 The file format should be `.sbv`.
 To define speaker, please use`:`or`：`(`\uff1a`).
-To define diffent speaker in same line, please use`&`.
+To define diffent speaker in same line, please use`,`,`&`or`、`(`\u3001`).
 
 subtitle.sbv
 ```
