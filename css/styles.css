@@ -1,0 +1,19 @@
+.material-icons.md-18 {
+    font-size: 18px;
+}
+
+.material-icons {
+    display: block;
+}
+
+.card {
+    margin-bottom: 1rem;
+}
+pre {
+    border-radius: 5px;
+    background-color: #e6e6e6;
+    overflow: hidden;
+}
+.circle {
+    border-radius: 20px;
+}

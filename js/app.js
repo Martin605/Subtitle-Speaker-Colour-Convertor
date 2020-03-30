@@ -18,7 +18,6 @@ function sbvTransfer() {
   }
   let sbv = "";
   let colour = {};
-
   ytt = '<?xml version="1.0" encoding="utf-8"?>\n<timedtext format="3">\n<head>\n<wp id="0" ap="7" ah="50" av="100" />\n<ws id="0" ju="2" pd="0" sd="0" />\n<pen id="0" sz="120" fc="#FEFEFE" fo="254" bo="0" et="3" ec="#000000" />';
   var sbvTime =[];
   const reader = new FileReader();
@@ -26,7 +25,7 @@ function sbvTransfer() {
   var colourCodeList = document.getElementsByClassName("colourCode");
   for (var i = 0; i < colourNameList.length; i++) {
     ytt += `<pen id="${i+1}" sz="120" fc="#${colourCodeList[i].value.toUpperCase()}" fo="254" bo="0" et="3" ec="#000000" />\n`
-    colour[colourNameList[i].value] = i+1
+    colour[`${colourNameList[i].value}`] = i+1
   }
   const sbvreader = new FileReader();
   sbvreader.onload = function (e) {

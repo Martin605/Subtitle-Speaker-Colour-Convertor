@@ -1,7 +1,7 @@
 <html>
 
 <head>
-  <title>Subtitle Speaker Colour Convertor</title>
+  <title>講者字幕顏色轉換器</title>
   <!-- bootstrap -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" 
   integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
@@ -17,30 +17,30 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.js.map"></script>
   <!-- WEB APP JS -->
-  <script type="text/javascript" src="js/app.js"></script>
-  <script type="text/javascript" src="js/FileSaver.js"></script>
+  <script type="text/javascript" src="../../js/app.js"></script>
+  <script type="text/javascript" src="../../js/FileSaver.js"></script>
 
   <!-- style -->
-  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="../../css/styles.css">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
 <body onload="onLoad()">
   <!-- navbar -->
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="#">Subtitle Speaker Colour Convertor</a>
+    <a class="navbar-brand" href="#">講者字幕顏色轉換器</a>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item active">
-          <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+          <a class="nav-link" href="index.html">主頁<span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="help.html">Help</a>
+          <a class="nav-link" href="help.html">幫助</a>
         </li>
     </div>
     <div class="right-align">
-      <a class="nav-link" href="lang/zh-TW/index.html">中文</a>
+      <a class="nav-link" href="../../index.html">English</a>
     </div>
   </nav>
 
@@ -48,7 +48,7 @@
   <div class="container" style="margin-top:2rem;">
     <div class="jumbotron">
       <!-- Info -->
-      <h1 class="display-4">YouTube CC Subtitle Speaker Colour Convertor</h1>
+      <h1 class="display-4">YouTube CC 講者字幕顏色轉換器</h1>
       <p class="lead"></p>
       <!-- Main APP -->
       <div id="statusAuth">
@@ -56,24 +56,24 @@
         <!-- upload page -->
         <div id="upload">
           <form id="form">
-            <h4>Subtitle File</h4>
+            <h4>字幕檔</h4>
             <div class="custom-file">
               <input id="sbvupload" type="file" class="custom-file-input" accept=".sbv" required>
-              <label class="custom-file-label" for="sbvupload">Choose SBV file(Subtitle file from YouTube)</label>
-              <div id="noFile" class="invalid-feedback">Please choose a SBV file</div>
+              <label class="custom-file-label" for="sbvupload">選擇 SBV 檔案</label>
+              <div id="noFile" class="invalid-feedback">請選擇一個 SBV 檔案</div>
             </div><br><br>
-            <h4>Speaker Colour Setting</h4>
+            <h4>講者顏色設定</h4>
             <ul class="list-group ">
               <li class="list-group-item">
                 <div class="custom-file col-5">
                   <input id="colorupload" type="file" class="custom-file-input" accept=".json">
-                  <label class="custom-file-label" for="colorupload">Choose json file</label>
-                  <div id="noFile" class="invalid-feedback">Please choose a json file</div>
+                  <label class="custom-file-label" for="colorupload">選擇 JSON 檔案</label>
+                  <div id="noFile" class="invalid-feedback">請選擇一個 JSON 檔案</div>
                 </div>
                 <a class="btn btn-primary btn" onclick="loadJSON()" href="#" role="button">
-                  <i class="material-icons">cloud_upload</i>Load</a>
+                  <i class="material-icons">cloud_upload</i>載入</a>
                 <a class="btn btn-primary btn" onclick="saveJSON()" href="#" role="button">
-                  <i class="material-icons">cloud_download</i>Save</a>
+                  <i class="material-icons">cloud_download</i>儲存</a>
               </li>
               <div id="colourList">
               </div>
@@ -85,7 +85,7 @@
           <!-- <a class="btn btn-primary btn-lg" onclick="preview()" href="#" role="button">
             <i class="material-icons">cloud_download</i> Preview</a> -->
           <a class="btn btn-primary btn-lg" onclick="upload()" href="#" role="button">
-            <i class="material-icons">save_alt</i>Convert</a>
+            <i class="material-icons">save_alt</i>轉換</a>
         </div>
         <!-- error page -->
         <div id="error">
@@ -94,6 +94,7 @@
           <button class="btn btn-secondary" onclick="returnUpload()"><i
               class="material-icons">arrow_back_ios</i></button>
         </div>
+
       </div>
       <!-- Back APP -->
       <div id="returnButton" class="center-align" class="col">
@@ -103,11 +104,11 @@
     </div>
     <!-- Footer -->
     <div class="text-center">
-      <a class="btn" href="https://github.com/Martin605/Subtitle-Speaker-Colour-Generator"><img src="img/GitHub-Mark-64px.png" width="40px">Github Repository</a><br>
+      <a class="btn" href="https://github.com/Martin605/Subtitle-Speaker-Colour-Generator"><img src="../../img/GitHub-Mark-64px.png" width="40px">Github Repository</a><br>
       All credit goes to: 
       <a class="btn" href="https://github.com/Martin605/"><img class="circle" src="https://avatars2.githubusercontent.com/u/23187664" width="40px" > Martin Leung </a>
     </div>
-</div>
+  </div>
 </body>
 
 </html>
