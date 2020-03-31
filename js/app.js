@@ -45,7 +45,7 @@ function preview() {
           var txt = [];
           if (sbv[i].match(/.*[:|\uff1a].*/)) {
             txt = sbv[i].split(/:|\uff1a/,2)
-            if (txt[0].match('&')) {
+            if (txt[0].match(/.*[,|&|\u3001|、].*/)) {
               var speaker = txt[0].split(/,|&|\u3001/)
               yttPreview += `<br>`
               for (var ii = 0; ii < speaker.length; ii++) {
@@ -112,8 +112,8 @@ function upload() {
           var txt = [];
           if (sbv[i].match(/.*[:|\uff1a].*/)) {
             txt = sbv[i].split(/:|\uff1a/,2)
-            if (txt[0].match('&')) {
-              var speaker = txt[0].split('&')
+            if (txt[0].match(/.*[,|&|\u3001|、].*/)) {
+              var speaker = txt[0].split(/,|&|\u3001|、/)
               // ytt += `\n`
               for (var ii = 0; ii < speaker.length; ii++) {
                 if (typeof(colour[speaker[ii].split(' ').join('')]) == "undefined") {c=0} else {c=colour[speaker[ii].split(' ').join('')]}
