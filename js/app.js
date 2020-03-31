@@ -114,7 +114,7 @@ function upload() {
             txt = sbv[i].split(/:|\uff1a/,2)
             if (txt[0].match('&')) {
               var speaker = txt[0].split('&')
-              ytt += `\n`
+              // ytt += `\n`
               for (var ii = 0; ii < speaker.length; ii++) {
                 if (typeof(colour[speaker[ii].split(' ').join('')]) == "undefined") {c=0} else {c=colour[speaker[ii].split(' ').join('')]}
                 if (ii < speaker.length-1) {ytt += `<s p="${c}">${speaker[ii]}</s>&`}
@@ -123,10 +123,10 @@ function upload() {
               ytt += `\uff1a${txt[1]}`
             } else {
               if (typeof(colour[txt[0].split(' ').join('')]) == "undefined") {c=0} else {c=colour[txt[0].split(' ').join('')]}
-              ytt += `\n<s p="${c}">${sbv[i]}</s>`
+              ytt += `<s p="${c}">${sbv[i]}</s>`
             }
           } else {
-            ytt += `\n<s p="0">${sbv[i]}</s>`
+            ytt += `<s p="0">${sbv[i]}</s>`
           }
         }
       }
