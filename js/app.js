@@ -55,7 +55,7 @@ function preview() {
               }
               yttPreview += `\uff1a${txt[1]}`
             } else {
-              if (typeof(colour[txt[0]]) == "undefined") {c=colour["default"]} else {c=colour[txt[0]]}
+              if (typeof(colour[txt[0].split(' ').join('')]) == "undefined") {c=colour["default"]} else {c=colour[txt[0].split(' ').join('')]}
               yttPreview += `<br><span style="color:${c};">${sbv[i]}</span>`
             }
           } else {
@@ -122,7 +122,7 @@ function upload() {
               }
               ytt += `\uff1a${txt[1]}`
             } else {
-              if (typeof(colour[txt[0]]) == "undefined") {c=0} else {c=colour[txt[0]]}
+              if (typeof(colour[txt[0].split(' ').join('')]) == "undefined") {c=0} else {c=colour[txt[0].split(' ').join('')]}
               ytt += `\n<s p="${c}">${sbv[i]}</s>`
             }
           } else {
