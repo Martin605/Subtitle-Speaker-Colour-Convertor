@@ -49,7 +49,7 @@ function preview() {
               var speaker = txt[0].split(/,|&|\u3001/)
               yttPreview += `<br>`
               for (var ii = 0; ii < speaker.length; ii++) {
-                if (typeof(colour[speaker[ii]]) == "undefined") {c=0} else {c=colour[speaker[ii]]}
+                if (typeof(colour[speaker[ii].split(' ').join('')]) == "undefined") {c=0} else {c=colour[speaker[ii].split(' ').join('')]}
                 if (ii < speaker.length-1) {yttPreview += `<span style="color:${c};">${speaker[ii]}</span>&`}
                 else {yttPreview += `<span style="color:${c};">${speaker[ii]}</span>`}
               }
@@ -116,7 +116,7 @@ function upload() {
               var speaker = txt[0].split('&')
               ytt += `\n`
               for (var ii = 0; ii < speaker.length; ii++) {
-                if (typeof(colour[speaker[ii]]) == "undefined") {c=0} else {c=colour[speaker[ii]]}
+                if (typeof(colour[speaker[ii].split(' ').join('')]) == "undefined") {c=0} else {c=colour[speaker[ii].split(' ').join('')]}
                 if (ii < speaker.length-1) {ytt += `<s p="${c}">${speaker[ii]}</s>&`}
                 else {ytt += `<s p="${c}">${speaker[ii]}</s>`}
               }
