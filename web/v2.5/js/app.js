@@ -38,7 +38,8 @@ function preview() {
           if ( t==0 ) {t=1};
           var d = listFloat(sbvTime[1].split(":"));
           d = parseInt(((d[0]*60+d[1])*60+d[2])*1000 - t);
-          yttPreview += `<tr><th scope="row">${sbv[i]}</th><td>t="${t}" d="${d}"</td><td>`
+          if (d < 0) {var error = "bg-danger"} else {var error = ""}
+          yttPreview += `<tr class="${error}" ><th scope="row">${sbv[i]}</th><td>t="${t}" d="${d}"</td><td>`
         } else if (sbv[i].length == 1 | sbv[i] == "") {
           yttPreview += "</td></tr>"
         } else {
