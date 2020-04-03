@@ -1,5 +1,6 @@
 let ytt=""
 var htmlTxt = {}
+var version = "v2.6"
 
 // Operations when the web page is loaded.
 function onLoad() {
@@ -7,6 +8,11 @@ function onLoad() {
   var lang = navigator.language || navigator.userLanguage; 
   document.querySelector('#colorupload').addEventListener('change', (e) => {
   loadJSON();});
+  // var last_version = localStorage.getItem('version');
+  // if (last_version != version) {
+  //   document.getElementById("newUpdate").style.display = "inline";
+  //   localStorage.setItem('version', version);
+  //   }
 }
 
 //// Preview
@@ -19,12 +25,12 @@ function preview() {
   try {
     let sbv = "";
     let colour = {};
-    colour['default'] = '#FEFEFE';
     var sbvTime =[];
     const reader = new FileReader();
     var colourNameList = document.getElementsByClassName("colourName");
     var colourCodeList = document.getElementsByClassName("colourCode");
-    for (var i = 0; i < colourNameList.length; i++) {
+    colour['default'] = `#${colourCodeList[0].value.toUpperCase()}`;
+    for (var i = 1; i < colourNameList.length; i++) {
       colour[`${colourNameList[i].value}`] = `#${colourCodeList[i].value.toUpperCase()}`
     }
     const sbvreader = new FileReader();
@@ -50,11 +56,11 @@ function preview() {
               var speaker = txt[0].split(/,|&|\u3001/)
               yttPreview += `<br>`
               for (var ii = 0; ii < speaker.length; ii++) {
-                if (typeof(colour[speaker[ii].split(' ').join('')]) == "undefined") {c=0} else {c=colour[speaker[ii].split(' ').join('')]}
-                if (ii < speaker.length-1) {yttPreview += `<span style="color:${c};">${speaker[ii]}</span>&`}
+                if (typeof(colour[speaker[ii].split(' ').join('')]) == "undefined") {c=colour["default"]} else {c=colour[speaker[ii].split(' ').join('')]}
+                if (ii < speaker.length-1) {yttPreview += `<span style="color:${c};">${speaker[ii]}</span><span style="color:${colour["default"]};">&</span>`}
                 else {yttPreview += `<span style="color:${c};">${speaker[ii]}</span>`}
               }
-              yttPreview += `\uff1a${txt[1]}`
+              yttPreview += `\uff1a<span style="color:${colour["default"]};">${txt[1]}</span>`
             } else {
               if (typeof(colour[txt[0].split(' ').join('')]) == "undefined") {c=colour["default"]} else {c=colour[txt[0].split(' ').join('')]}
               yttPreview += `<br><span style="color:${c};">${sbv[i]}</span>`
@@ -71,13 +77,13 @@ function preview() {
     };
     sbvreader.readAsText(sbvFiles[0]);
     } catch(e) {
-    showerror("Error")
+    showerror(e)
   }
   
 }
 
 //// Upload
-function upload() {
+function convert() {
   var sbvFiles = document.getElementById("sbvupload").files;
   if (!sbvFiles.length || sbvFiles[0].name.match('.sbv')) {
     document.getElementById("form").classList.add("was-validated");
@@ -85,12 +91,13 @@ function upload() {
   try {
     let sbv = "";
     let colour = {};
-    ytt = '<?xml version="1.0" encoding="utf-8"?>\n<timedtext format="3">\n<head>\n<wp id="0" ap="7" ah="50" av="100" />\n<ws id="0" ju="2" pd="0" sd="0" />\n<pen id="0" sz="120" fc="#FEFEFE" fo="254" bo="0" et="3" ec="#000000" />';
+    ytt = '<?xml version="1.0" encoding="utf-8"?>\n<timedtext format="3">\n<head>\n<wp id="0" ap="7" ah="50" av="100" />\n<ws id="0" ju="2" pd="0" sd="0" />\n';
     var sbvTime =[];
     const reader = new FileReader();
     var colourNameList = document.getElementsByClassName("colourName");
     var colourCodeList = document.getElementsByClassName("colourCode");
-    for (var i = 0; i < colourNameList.length; i++) {
+    ytt += `<pen id="0" sz="120" fc="#${colourCodeList[0].value.toUpperCase()}" fo="254" bo="0" et="3" ec="#000000" />\n`
+    for (var i = 1; i < colourNameList.length; i++) {
       ytt += `<pen id="${i+1}" sz="120" fc="#${colourCodeList[i].value.toUpperCase()}" fo="254" bo="0" et="3" ec="#000000" />\n`
       colour[`${colourNameList[i].value}`] = i+1
     }
@@ -137,7 +144,7 @@ function upload() {
     };
     sbvreader.readAsText(sbvFiles[0]);
     } catch(e) {
-    showerror("Error")
+    showerror(e)
   }
 }
 
@@ -180,25 +187,28 @@ function listFloat(list) {
 
 function loadJSON() {
   removeAllColour();
+  try {
   let fileToLoad = document.getElementById("colorupload").files[0];
   let fileReader = new FileReader();
   fileReader.onload = function (fileLoadedEvent) {
       prepareJson = JSON.parse(fileLoadedEvent.target.result);
       let keys = Object.keys(prepareJson);
-      for (let i = 0; i < keys.length; i++) {
+      if (prepareJson["default"]) {
+        document.getElementById("colourCode0").value = prepareJson["default"];}
+      for (let i = 1; i < keys.length; i++) {
           let key = keys[i];
           addColour(key,prepareJson[key]);
       }
   };
   fileReader.readAsText(fileToLoad, "UTF-8");
+  } catch(e) {removeAllColour();
+  }
 }
 
 function removeAllColour(){
-  var colourNameList1 = document.getElementsByClassName("colourName");
-  for (var i = colourNameList1.length; i--;) {
-    console.log(i);
-    removeColour(i);
-  }
+  var colourNameList1 = document.getElementsByClassName("colourLI");
+  for (var i = colourNameList1.length;i--;) {
+    colourNameList1[i].remove();}
 }
 
 function addNewColour(){
@@ -207,7 +217,7 @@ function addNewColour(){
 }
 
 function colourListTxt(i,colourName,colourCode){
-  return `<li id="colour${i}" class="list-group-item">
+  return `<li id="colour${i}" class="colourLI list-group-item">
   <div class="input-group col-10">
     <input type="text" id="colourName${i}" class="colourName form-control" placeholder="Name" aria-describedby="inputGroupPrepend" value="${colourName}" required>
     &nbsp;&nbsp;
@@ -223,7 +233,7 @@ function addColour(colourName,colourCode) {
   var colourNameList3 = document.getElementsByClassName("colourName");
   var colourCodeList = document.getElementsByClassName("colourCode");
   var ctxt = ""
-  for (var i = 0; i < colourNameList3.length; i++) {
+  for (var i = 1; i < colourNameList3.length; i++) {
     ctxt += colourListTxt(i,colourNameList3[i].value,colourCodeList[i].value)
   }
   ctxt += colourListTxt(colourNameList3.length,colourName,colourCode)
@@ -243,7 +253,8 @@ function saveJSON() {
   let colourJson = {};
   var colourNameList4 = document.getElementsByClassName("colourName");
   var colourCodeList = document.getElementsByClassName("colourCode");
-  for (var i = 0; i < colourNameList4.length; i++) {
+  colourJson["default"] = document.getElementById("colourCode0").value
+  for (var i = 1; i < colourNameList4.length; i++) {
     colourJson[colourNameList4[i].value] = colourCodeList[i].value;}
   let blob = new Blob([JSON.stringify(colourJson)], {type: "text/plain;charset=utf-8"});
   saveAs(blob, "colour.json");
