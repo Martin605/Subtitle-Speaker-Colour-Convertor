@@ -17,6 +17,7 @@ function onLoad() {
 function navBar() {
     var current = window.location.pathname.split('/')
     current = current[current.length-1].replace('.html','')
+    if (current=="") {current="index"};
     $('#navBar').load("html_part/navBar",
         function() {
             $(`#${current}nav`).append('<span class="sr-only">(current)</span>')
