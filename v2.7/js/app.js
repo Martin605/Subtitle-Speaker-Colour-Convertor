@@ -3,11 +3,11 @@ var htmlTxt = {}
 var version = "v2.6"
 
 // Operations when the web page is loaded.
-function onLoad() {
-  returnUpload()
-  var lang = navigator.language || navigator.userLanguage; 
+function appOnLoad() {
+  returnUpload();
   document.querySelector('#colorupload').addEventListener('change', (e) => {
   loadJSON();});
+  onLoad();
   // var last_version = localStorage.getItem('version');
   // if (last_version != version) {
   //   document.getElementById("newUpdate").style.display = "inline";
@@ -17,7 +17,7 @@ function onLoad() {
 
 //// Preview
 function preview() {
-  let yttPreview = '<table class="table table-dark"><thead><tr><th scope="col">Time(sbv)</th><th scope="col">Time(ytt)</th><th scope="col">Subtitle</th></tr></thead><tbody>'
+  let yttPreview = '<table class="table table-dark"><thead><tr><th scope="col" data-translate="_timeSbv">Time(sbv)</th><th scope="col" data-translate="_timeXml">Time(xml)</th><th scope="col" data-translate="_subtitle">Subtitle</th></tr></thead><tbody>'
   var sbvFiles = document.getElementById("sbvupload").files;
   if (!sbvFiles.length || sbvFiles[0].name.match('.sbv')) {
     document.getElementById("form").classList.add("was-validated");
@@ -74,6 +74,7 @@ function preview() {
       document.getElementById("preview").style.display = "inline";
       document.getElementById("previewTitle").style.display = "inline";
       document.getElementById("preview").innerHTML = yttPreview.split('<td><br>').join('<td>');
+      setLang(localStorage.getItem('lang'));
     };
     sbvreader.readAsText(sbvFiles[0]);
     } catch(e) {

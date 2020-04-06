@@ -14,9 +14,13 @@ pre {
     background-color: #e6e6e6;
     overflow: hidden;
 }
-.circle {
-    border-radius: 20px;
-    width: 40px;
+.userIcon {
+    border-radius: 40px;
+    width: 80px;
+}
+.miniIcon {
+    border-radius: 18px;
+    width: 36px;
 }
 #newUpdate {
     display:none;
