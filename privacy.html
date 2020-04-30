@@ -1,0 +1,58 @@
+<html>
+
+<head>
+  <title>Subtitle Speaker Colour Convertor</title>
+  <!-- bootstrap -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" 
+  integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" 
+  integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" 
+  integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" 
+  integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bs-custom-file-input/dist/bs-custom-file-input.min.js"></script>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" src="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.js.map"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <!-- style -->
+  <script type="text/javascript" src="v2.8/js/web.js"></script>
+  <link rel="stylesheet" href="v2.8/css/styles.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body onload="onLoad()">
+  <!-- navbar -->
+  <div id="navBar"></div>
+
+  <!-- body -->
+  <div class="container" style="margin-top:2rem;">
+    <div class="jumbotron">
+      <h1 data-translate="_privacy">Privacy Policy</h1>
+      <div class="card">
+        <div class="card-body">
+          <p data-translate="_privacyBody">
+            Subtitle Speaker Colour Convertor will not store any data in our serevr. 
+            The data that provide in convertor only store and progress in your browser apart from uploading subtitle to YouTube.
+            The data from google will not store and only use to download subtitle from YouTube and upload subtitle to YouTube. 
+            We will only use/do the fllowing data/action: list, update and upload YouTube video's captions. Other unnecessary data will not be use.
+          </p></div>
+        </div>
+      </div>
+    <a class="btn btn-primary btn-lg" href="index.html" data-translate="_back">
+      Back</a>
+  </div>
+  </div>
+  <!-- Footer -->
+  <div id="footer"></div>
+  <script type="text/javascript">
+    $(document).on('click', '[data-toggle="lightbox"]', function(event) {
+                event.preventDefault();
+                $(this).ekkoLightbox();
+            });
+  </script>
+</body>
+
+</html>
