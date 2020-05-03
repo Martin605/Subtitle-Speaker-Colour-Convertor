@@ -1,0 +1,47 @@
+<html>
+
+<head>
+  <title>Subtitle Speaker Colour Convertor</title>
+  <!-- bootstrap -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" 
+  integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" 
+  integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" 
+  integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bs-custom-file-input/dist/bs-custom-file-input.min.js"></script>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" src="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.js.map"></script>
+  
+  <script src="https://kit.fontawesome.com/d67268b12c.js" crossorigin="anonymous"></script>
+  <link rel="manifest" href="/manifest.json" async>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE">
+  <script>
+    window.addEventListener('message',function(e){
+      console.log(e.data);},false);
+    function aaa() {
+      targetWindow.postMessage(["aaa"],"*.googleusercontent.com");}
+  </script>
+</head>
+
+<body >
+<div id="main">
+  <form id="theuploadform" method="POST" action="https://script.google.com/macros/s/AKfycby45ctAxTI0qwKvZmaZxV9aAYuqfHxk3azFkbAWB80f5d7iaIYg/exec" target="Form1">
+    <input id="userfile" name="videoId" type="text" />
+    <input id="ile" name="lang" type="text" />
+    <input id="ile" name="name" type="text" />
+    <textarea id="xmlPreview" name="xml" class="preview form-control"></textarea>
+    <input name="hl" type="text" value="zh-TW" />
+    <input id="formsubmit" type="submit" value="Send File" />
+
+  </form>
+  <iframe id="Form1" name="Form1"  src="" style="width:100%; height: 100%;" sandbox="allow-popups allow-scripts allow-same-origin allow-presentation"></iframe>
+  
+</div>
+</body>
+
+</html>

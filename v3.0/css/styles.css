@@ -1,0 +1,60 @@
+.material-icons.md-18 {
+    font-size: 18px;
+}
+.material-icons {
+    display: block;
+}
+.card {
+    margin-bottom: 1rem;
+}
+pre {
+    border-radius: 5px;
+    background-color: #e6e6e6;
+    overflow: hidden;
+}
+.userIcon {
+    border-radius: 40px;
+    width: 80px;
+}
+.miniIcon {
+    border-radius: 18px;
+    width: 36px;
+}
+#newUpdate,.colorPicker {
+    display:none;
+}
+.jumbotron {
+    padding-bottom: 5px;
+}
+#sbvRPreview, .preview {
+    max-height: calc(100% - 450px);
+    height: calc(100% - 450px);
+}
+.user {
+    padding: 2rem 2rem 2rem 2rem;
+}
+#loadingIcon {
+    width: 8rem; 
+    height: 8rem;
+}
+.iform {
+    width:100%; 
+    border: 0;
+    padding: 10px;
+    max-width: 100%;
+    height: calc(100vw/10*3);
+}
+.colourPreview {background-color: #343a40}
+.colourPickerBtn {cursor: pointer;}
+i {vertical-align: text-bottom;}
+::-webkit-scrollbar-track {
+    background-color: #ffffff;
+}
+::-webkit-scrollbar {
+	width: 12px;
+	background-color: #FFFFFF;
+}
+::-webkit-scrollbar-thumb {
+	border-radius: 10px;
+	background-color: #e9ecef;
+}

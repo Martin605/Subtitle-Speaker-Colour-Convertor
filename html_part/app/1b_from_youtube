@@ -1,0 +1,9 @@
+<h3 data-translate="_step1">Step 1</h3>
+<h4 data-translate="_ytSubtitle">Select Subtitle From YouTube</h4>
+<div class="alert alert-warning" role="alert">
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+  <span data-translate="_ytCCAlert">Please make sure that the YouTube CC subtitle area <code>published</code>.</span>
+</div>
+<iframe id="downloadForm" class="iform" src="" scrolling="no" style="height: 500"></iframe>

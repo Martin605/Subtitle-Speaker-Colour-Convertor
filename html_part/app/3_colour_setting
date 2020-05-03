@@ -1,0 +1,40 @@
+<h3 data-translate="_step3">Step 3</h3>
+<h4 data-translate="_colourSetting">Speaker Colour Setting</h4>
+<ul class="list-group ">
+  <li class="list-group-item">
+    <div class="row">
+    <div class="input-group col">
+      <div class="input-group-prepend mb-4">
+        <span class="input-group-text" data-translate="_colourSettingFile">Colour Setting File</span>
+      </div>
+      <div class="custom-file">
+        <input id="colorupload" type="file" class="custom-file-input" accept=".json">
+        <label class="custom-file-label" for="colorupload" data-translate="_colourSettingFileChoose">Choose json file</label>
+    </div></div>
+    <div class="right-align col-auto">
+    <a class="btn btn-primary btn" onclick="loadJSON()" href="#" role="button">
+      <i class="material-icons">cloud_upload</i><span data-translate="_load">Load</span></a>
+    <a class="btn btn-primary btn" onclick="saveJSON()" href="#" role="button">
+      <i class="material-icons">cloud_download</i><span data-translate="_save">Save</span></a></div>
+  </li>
+  <li class="list-group-item">
+    <div class="input-group col-12">
+      <span id="colourName0" class="colourName form-control" data-translate="_defaultColour">Default Colour</span>
+      &nbsp;&nbsp;
+      <div class="input-group-prepend"><span class="input-group-text" id="inputGroupPrepend">#</span></div>
+      <input type="text" id="colourCode0" class="colourCode form-control" value="FFFFFF" aria-describedby="inputGroupPrepend" pattern="^[A-Fa-f0-9]{6}$" required>
+      <label id="colourPickerBtn0" class="form-control input-group-text col-1" for="colorPicker0"><span class="material-icons">color_lens</span></label>
+      &nbsp;&nbsp;
+      <input id="colorPicker0" value="#FFFFFF" class="colorPicker" type="color">
+      &nbsp;&nbsp;
+      <span id="colourPreview0" class="colourPreview form-control" style="color:#${colourCode};">Preview 預覽</span>
+      &nbsp;&nbsp;
+      <button class="btn btn-secondary" onclick="addNewColour()"><i class="material-icons">add</i></button>
+    </div>
+  </li>
+  <div id="colourList">
+  </div>
+  <li id="addcolour" class="list-group-item">
+    <button class="btn btn-secondary" onclick="addNewColour()"><i class="material-icons">add</i></button>
+  </li>
+</ul>

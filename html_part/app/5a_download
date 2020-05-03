@@ -1,0 +1,7 @@
+<h3 data-translate="_step5">Step 5</h3>
+<h4 data-translate="_download">Download</h4>
+<div class="center-align col">
+  <button type="button" class="btn btn-primary btn-lg btn-block" onclick="download()"  style="font-size: 48px;"><i class="fas fa-file-download"></i><br><span data-translate="_download">Download</span></button>
+  <br>
+  <button type="button" class="btn btn-primary btn-lg btn-block" onclick="uploadStep()"  style="font-size: 48px;"><i class="fa fa-youtube-play" aria-hidden="true"></i><br><span data-translate="_uploadYoutube">Upload to YouTube Video</span></button>
+</div>

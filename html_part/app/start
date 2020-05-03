@@ -1,0 +1,6 @@
+<div class="center-align col">
+  <button type="button" class="btn btn-primary btn-lg btn-block" onclick="uploadSBVStep()" style="font-size: 48px;"><i class="fa fa-file-upload"></i><br><span data-translate="_uploadSBV">Upload File</span></button>
+</div><br>
+<div class="center-align col">
+  <button type="button" class="btn btn-primary btn-lg btn-block" onclick="ytSubtitleStep()" style="font-size: 48px;"><i class="fa fa-youtube-play" aria-hidden="true"></i><br><span data-translate="_fromyt">Import From YouTube Video</span></button>
+</div>

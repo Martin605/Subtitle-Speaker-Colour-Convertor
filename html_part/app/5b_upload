@@ -1,0 +1,52 @@
+<h3 data-translate="_step5">Step 5</h3>
+<h4 data-translate="_uploadToYT">Upload to YouTube</h4>
+<div class="center-align col">
+  <div id="uploadForm" class="form-group">
+  <label for="youtubeVideo" data-translate="_ytURL">YouTube Video URL</label>
+  <input type="url" class="form-control" id="youtubeVideo" 
+  data-toggle="tooltip" data-placement="bottom" required>
+  <div id="formateInfo" class="alert alert-secondary" role="alert">
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+  <h6 class="alert-heading" data-translate="_ytURLFormate">Accept YouTube Video URL Format</h6>
+  <p><code>https://www.youtube.com/watch?v=XXXXXXXXXXX</code> <br> <code>https://www.youtube.com/watch?v=XXXXXXXXXXX&......</code> <br>
+  <code>https://www.youtube.com/timedtext_editor?v=XXXXXXXXXXX</code> <br> <code>https://www.youtube.com/timedtext_editor?v=XXXXXXXXXXX&......</code> <br>
+  <code>https://studio.youtube.com/video/XXXXXXXXXXX/</code> <br> <code>https://studio.youtube.com/video/XXXXXXXXXXX/.......</code> <br>
+    <code>https://youtu.be/XXXXXXXXXXX</code>
+  </p>
+  </div>
+  <form id="uploadFormPost" method="POST" action="" target="uploadFormOutput">
+  <br><label for="youtubeVideo" data-translate="_subtitleName">Subtitle Name</label>
+  <input type="text" id="name" name="name" class="form-control" data-toggle="tooltip" data-placement="bottom">
+  <br>
+  <label for="ytLang" data-translate="_subLang">Subtitle Language</label>
+  <select id="ytLang" name="lang" class="form-control">
+  </select><br>
+  <div class="custom-control custom-checkbox">
+  <input type="checkbox" id="draft" name="draft" value="isDraft" class="custom-control-input form-control">
+  <label class="custom-control-label" for="draft" data-translate="_draft">Draft</label></div><br>
+  <div style="display:none;">
+  <input type="text" name="videoId" id="youtubeVideoId" required>
+  <input type="text" name="hl" id="langUpload" required>
+  <textarea id="xmlPreview" name="xml" class="preview form-control" readonly></textarea></div>
+  <button id="uploadBtn" class="btn btn-primary disabled" onClick=""
+  form="uploadForm" value="Send File" data-translate="_upload">Upload</button></form>
+  </div>
+  <div class="d-flex justify-content-center">
+    <div id="uploading" class="spinner-border" role="status" style="display: none;">
+      <span class="sr-only">Loading...</span>
+    </div>
+  </div>
+  <div id="uploadSuccess" class="text-center uploadStaus" style="display: none;">
+    <div  class="d-flex justify-content-center" >
+      <span class="material-icons" style="font-size:60px;color:#155724;">check_circle</span>
+  </div> </div>
+  <div id="uploadFail" class="text-center uploadStaus" style="display: none;">
+    <div class="d-flex justify-content-center">
+      <span class="material-icons" style="font-size:60px;color:#721c24;">cancel</span><br>
+      <span id="uploadFailMsg"></span>
+  </div></div>
+  <iframe id="uploadFormOutput" name="uploadFormOutput" class="iform" scrolling="no" style="height: 500;display: none;" sandbox="allow-popups allow-scripts allow-same-origin allow-presentation"></iframe>
+  <iframe id="youtubePreview" class="iform" style="display: none;" src="" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>

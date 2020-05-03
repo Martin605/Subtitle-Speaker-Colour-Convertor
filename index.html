@@ -1,30 +1,18 @@
-<html>
+<html lang="en">
 
 <head>
   <title>Subtitle Speaker Colour Convertor</title>
   <!-- bootstrap -->
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" 
-  integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" 
-  integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" 
-  integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" 
-  integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bs-custom-file-input/dist/bs-custom-file-input.min.js"></script>
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <link rel="stylesheet" src="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.css">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.js.map"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  <!-- WEB APP JS -->
-  <script type="text/javascript" src="v2.8/js/app.js"></script>
-  <script type="text/javascript" src="v2.8/js/web.js"></script>
-  <script type="text/javascript" src="v2.8/js/FileSaver.js"></script>
-
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous" async>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/css/bootstrap-select.min.css" async>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous" async defer></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous" async defer></script>
   <!-- style -->
-  <link rel="stylesheet" href="v2.8/css/styles.css">
+  <link rel="stylesheet" href="v3.0/css/styles.css" async>
+  <link rel="manifest" href="/manifest.json" async>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#FFFFFF">
   <META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE">
 </head>
 
@@ -35,88 +23,64 @@
   <div class="container" style="margin-top:2rem;">
     <div class="jumbotron">
       <!-- Info -->
-      <h1 class="display-4" data-translate="_appTitle">YouTube CC Subtitle Speaker Colour Convertor</h1>
-      <p class="lead"></p>
-      <!-- Main APP -->
-      <div id="statusAuth">
-        <hr class="my-4">
-        <!-- upload page -->
-        <div id="upload">
-          <form id="form">
-            <h4 data-translate="_subFile">Subtitle File</h4>
-            <div class="input-group mb-3">
-              <div class="input-group-prepend">
-                <span class="input-group-text" data-translate="_subFile">Subtitle File</span>
-              </div>
-              <div class="custom-file">
-                <input id="sbvupload" type="file" class="custom-file-input" accept=".sbv" required>
-                <label class="custom-file-label" for="sbvupload" data-translate="_subFileChoose">Choose SBV file(Subtitle file from YouTube)</label>
-                <div id="noFile" class="invalid-feedback" data-translate="_subFilePlease">Please choose a SBV file</div>
-              </div>
-            </div>
-            <h4 data-translate="_colourSetting">Speaker Colour Setting</h4>
-            <ul class="list-group ">
-              <li class="list-group-item">
-                <div class="row">
-                <div class="input-group col">
-                  <div class="input-group-prepend mb-4">
-                    <span class="input-group-text" data-translate="_colourSettingFile">Colour Setting File</span>
-                  </div>
-                  <div class="custom-file">
-                    <input id="colorupload" type="file" class="custom-file-input" accept=".json">
-                    <label class="custom-file-label" for="colorupload" data-translate="_colourSettingFileChoose">Choose json file</label>
-                    <div id="noFile" class="invalid-feedback" data-translate="_colourSettingFilePlease">Please choose a json file</div>
-                </div></div>
-                <div class="right-align col-auto">
-                <a class="btn btn-primary btn" onclick="loadJSON()" href="#" role="button">
-                  <i class="material-icons">cloud_upload</i><span data-translate="_load">Load</span></a>
-                <a class="btn btn-primary btn" onclick="saveJSON()" href="#" role="button">
-                  <i class="material-icons">cloud_download</i><span data-translate="_save">Save</span></a></div>
-              </li>
-              <li class="list-group-item">
-                <div class="input-group col-10">
-                  <span id="colourName0" class="colourName form-control" data-translate="_defaultColour">Default Colour</span>
-                  &nbsp;&nbsp;
-                  <div class="input-group-prepend"><span class="input-group-text" id="inputGroupPrepend">#</span></div>
-                  <input type="text" id="colourCode0" class="colourCode form-control" value="FFFFFF" aria-describedby="inputGroupPrepend" pattern="^[A-Fa-f0-9]{6}$" required>
-                  &nbsp;&nbsp;
-                  <button class="btn btn-secondary" onclick="addNewColour()"><i class="material-icons">add</i></button>
-                </div>
-              </li>
-              <div id="colourList">
-              </div>
-              <li id="addcolour" class="list-group-item">
-                <button class="btn btn-secondary" onclick="addNewColour()"><i class="material-icons">add</i></button>
-              </li>
-            </ul>
-          </form><br>
-          <div class="col-12">
-          <a class="btn btn-primary btn-lg" onclick="preview()" href="#" role="button">
-            <i class="material-icons">visibility</i><span data-translate="_preview">Preview</span></a>
-          <a class="btn btn-primary btn-lg" onclick="convert()" href="#" role="button">
-            <i class="material-icons">save_alt</i><span data-translate="_convert">Convert</span></a>
-          </div><br>
-          <h4 id="previewTitle">Preview</h4>
-          <div id="preview" class="preview">
-          </div>
-        </div>
-        <!-- error page -->
-        <div id="error">
-          <h4 data-translate="_error">ERROR</h4>
-          <p id="errormsg"></p>
-          <button class="btn btn-secondary" onclick="returnUpload()"><i
-              class="material-icons">arrow_back_ios</i></button>
+      <h2 class="display-4" data-translate="_appTitle">YouTube CC Subtitle Speaker Colour Convertor</h2>
+      <div class="row">
+        <div id="googleLogin" class="alert alert-danger col-12" role="alert" style="display:none;">
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          <span data-translate="_googleLogin">Please login your Google account in Google <a target="_blank" href="https://accounts.google.com/ServiceLogin/signinchooser?continue=https%3A%2F%2Fwww.google.com">website</a> first.</span>
+        </div></div>
+      <hr class="my-4">
+      <div id="loading" class="d-flex justify-content-center" style="display: inline;">
+        <div id="loadingIcon" class="spinner-border" role="status" style="display: inline;">
+          <span class="sr-only">Loading...</span>
         </div>
       </div>
-      <!-- Back APP -->
-      <div id="returnButton" class="center-align" class="col">
-        <hr class="my-4">
-        <button class="btn btn-secondary" onclick="returnUpload()"><i class="material-icons">arrow_back_ios</i></button>
+      <!-- Main APP -->
+      <!-- upload page -->
+      <div id="app">
+        <div id="StepStart" style="display: inline;"></div>
+        <div id="StepSBVUpload" style="display: none;" class="step"></div>
+        <div id="StepImportYt" style="display: none;" class="step"></div>
+        <div id="StepPreviewSBV" style="display: none;" class="step"></div>
+        <div id="StepColourSetting" style="display: none;" class="step"></div>
+        <div id="StepPreview" style="display: none;" class="step"></div>
+        <div id="StepDownload" style="display: none;" class="step"></div>
+        <div id="StepUpload" style="display: none;" class="step"></div>
+        <br>
+        <div id="pageSelector" class="step" style="display: none;">
+          <div class="row">
+            <div class="col-12"><hr class="my-4"></div>
+            <div class="col-auto mr-auto">
+              <a id="last" class="btn btn-primary" onclick="" href="#"><i class="material-icons">arrow_back_ios</i></a>
+            </div>
+            <div class="col-auto">
+              <a id="next" class="btn btn-primary" onclick="" href="#"><i class="material-icons">arrow_forward_ios</i></a>
+            </div><br><br>
+          </div>
+      </div>
+      </div>
+      <!-- error page -->
+      <div id="error" style="display: none;">
+        <h4 data-translate="_error">ERROR</h4>
+        <p id="errormsg"></p>
+        <button class="btn btn-secondary" onclick="returnApp()"><i
+            class="material-icons">arrow_back_ios</i></button>
       </div>
     </div>
-    <!-- Footer -->
-    <div id="footer"></div>
-</div>
+  </div>
+<!-- Footer -->
+<div id="footer"></div>
+<!-- Script -->
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" 
+integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous" async defer></script>
+<script src="https://cdn.jsdelivr.net/npm/bs-custom-file-input/dist/bs-custom-file-input.min.js"></script>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" async>
+<script src="https://kit.fontawesome.com/d67268b12c.js" crossorigin="anonymous"  async defer></script>
+<script type="text/javascript" src="v3.0/js/app.js" async defer></script>
+<script type="text/javascript" src="v3.0/js/web.js" async defer></script>
+<script type="text/javascript" src="v3.0/js/FileSaver.js" async defer></script>
 </body>
 
 </html>

@@ -1,0 +1,10 @@
+{
+    "short_name": "Subtitle Colour Convertor",
+    "name": "Subtitle Speaker Colour Convertor",
+    "description": "Convet Subtitle Colour",
+    "start_url": "index.html",
+    "background_color": "#FFFFFF",
+    "display": "standalone",
+    "scope": "/",
+    "theme_color": "#FFFFFF"
+  }

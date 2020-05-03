@@ -1,0 +1,4 @@
+<h3 data-translate="_step4">Step 4</h3>
+<h4 data-translate="_preview">Preview</h4>
+<div id="preview" class="overflow-auto preview">
+</div>

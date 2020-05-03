@@ -1,27 +1,19 @@
 <html>
 
-<head>
-  <title>Subtitle Speaker Colour Convertor</title>
-  <!-- bootstrap -->
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" 
-  integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" 
-  integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" 
-  integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" 
-  integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bs-custom-file-input/dist/bs-custom-file-input.min.js"></script>
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <link rel="stylesheet" src="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.css">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.js.map"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  <!-- style -->
-  <script type="text/javascript" src="v2.8/js/web.js"></script>
-  <link rel="stylesheet" href="v2.8/css/styles.css">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-</head>
+  <head>
+    <title>Subtitle Speaker Colour Convertor</title>
+    <!-- bootstrap -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous" async>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/css/bootstrap-select.min.css" async>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous" async defer></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous" async defer></script>
+    <!-- style -->
+    <link rel="stylesheet" href="v3.0/css/styles.css" async>
+    <link rel="manifest" href="/manifest.json" async>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE">
+  </head>
 
 <body onload="onLoad()">
   <!-- navbar -->
@@ -99,37 +91,6 @@ Monty&Hang:Subtitle</code></pre></div>
           <pre><code>{"Martin":"FFFFFF","Jacky":"FFFFFF","Monty":"FFFFFF","Hang":"FFFFFF"}</code></pre></div>
         </div>
       </div>
-      <h2 data-translate="_htu">How to use</h2>
-        <div class="card">
-          <div class="card-body">
-            <h5 class="card-title" data-translate="_step1">Step 1</h5>
-            <p data-translate="_htu1">Click <code>Browse</code> under <var>Subtitle File</var> and select <code>.sbv</code> file.</p>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-body">
-            <h5 class="card-title" data-translate="_step2">Step 2</h5>
-            <p data-translate="_htu2">If you don't have speaker colour setting json file, you can create a new one on Speaker Colour Setting. You can move to step2A.<br> 
-              If you have speaker colour setting json file, you can upload your file to Speaker Colour Setting. You can move to step2B. </p>
-            <h6 class="card-title" data-translate="_step2a">Step 2A</h6>
-            <p data-translate="_htu2a">To add a new speaker, please click <code>+</code> button which is at the end of session <var>Speaker Colour Setting</var>.<br> 
-              Please type the name of speaker which same to the original subtitle file and the format of colour is HEX e.g.<code>#FFFFFF</code>(but don't need to type<code>#</code>).<br> 
-              If you want to download the file of speaker colour setting, click  <code>save</code> button next to <var>load</var> button.
-            </p>
-            <h6 class="card-title" data-translate="_step2b">Step 2B</h6>
-            <p data-translate="_htu2b">Click <code>Browse</code> under <var>Speaker Colour Setting</var> and select <code>.json</code> file.<br> 
-              If success, the speaker colour setting will auto show. <br> 
-              If you cannot see the speaker colour setting, try click <code>load</code> button next to <var>Browse</var> button. <br> 
-              If still cannot show the speaker colour setting, there have on your file and try to make a new one. <br> 
-              If you want to download the file of speaker colour setting, click  <code>save</code> button next to <var>load</var> button.</p>
-        </div>
-        </div>
-        <div class="card">
-          <div class="card-body">
-            <h5 class="card-title" data-translate="_step3">Step 3</h5>
-            <p data-translate="_htu3">Click <code>Convert</code> at the end of the page. The <code>.ytt</code> file will download.</p>
-          </div>
-        </div>
       <h2 data-translate="_htuytcc">How to use for Youtube CC</h2>
       <div class="row">
         <div class="col-sm-6">
@@ -146,7 +107,7 @@ Monty&Hang:Subtitle</code></pre></div>
           <div class="card">
             <div class="card-body">
               <h5 class="card-title" data-translate="_step2">Step 2</h5>
-              <p class="card-text" data-translate="_htuytcc2">Upload subtitle file and add Speaker Colour Setting. Then click <code>convert</code>.</p>
+              <p class="card-text" data-translate="_htuytcc2">Upload subtitle file and add Speaker Colour Setting. Then click <code>download</code>.</p>
             </div>
             <a href="img/step2.png"  data-toggle="lightbox" data-title="Step2" data-max-width="1500">
                 <img src="img/step2.png" class="card-img-top" ></a>
@@ -166,7 +127,7 @@ Monty&Hang:Subtitle</code></pre></div>
           <div class="card">
             <div class="card-body">
               <h5 class="card-title" data-translate="_step4">Step 4</h5>
-              <p class="card-text" data-translate="_htuytcc4">Upload the <code>.ytt</code> file.<br>
+              <p class="card-text" data-translate="_htuytcc4">Upload the <code>.xml</code> file.<br>
               The subtitle colour will not show in YouTube subtitle editor, but it will show after you publish it.<br>
               The subtitle colour will disappear after using YouTube subtitle editor to edit the subtitle.</p>
             </div>
@@ -188,6 +149,13 @@ Monty&Hang:Subtitle</code></pre></div>
                 $(this).ekkoLightbox();
             });
   </script>
+  <script src="https://cdn.jsdelivr.net/npm/bs-custom-file-input/dist/bs-custom-file-input.min.js"></script>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" async>
+  <link rel="stylesheet" src="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.css" async>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.js" async defer></script>
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.js.map" async defer></script> -->
+  <script src="https://kit.fontawesome.com/d67268b12c.js" crossorigin="anonymous"  async defer></script>
+  <script type="text/javascript" src="v3.0/js/web.js" async defer></script>
 </body>
 
 </html>

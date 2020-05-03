@@ -1,0 +1,18 @@
+<div class="row">
+<div class="col-auto mr-auto">
+<h3 data-translate="_step2">Step 2</h3>
+<h4 data-translate="_previewSbv">Preview sbv File</h4>
+</div>
+<div class="col-auto">
+<a id="sbvRPreviewBtn" class="btn btn-primary btn disabled" onclick="showRawDataView()" href="#" role="button">
+<i class="material-icons">view_headline</i><span data-translate="_rawDataView">Raw Data View</span></a>
+<a id="sbvTPreviewBtn" class="btn btn-primary btn" onclick="showTableView()" href="#" role="button">
+<i class="material-icons">view_list</i><span data-translate="_tableView">Table View</span></a>
+<a id="sbvEPreviewBtn" class="btn btn-primary btn" onclick="EditRawData()" href="#" role="button">
+<i class="material-icons">create</i><span data-translate="_edit" >Edit</span></a>
+</div>
+</div>
+<div id="sbvPreviewLoading" style="display: inline;"><div class="spinner-border" role="status"> <span class="sr-only">Loading...</span></div></div>
+<textarea id="sbvRPreview" class="preview form-control" style="display: none;" readonly></textarea>
+<div id="sbvTPreview" class="preview" style="display: none;">
+</div>

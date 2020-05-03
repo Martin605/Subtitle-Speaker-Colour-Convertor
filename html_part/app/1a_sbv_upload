@@ -1,0 +1,7 @@
+<h3 data-translate="_step1">Step 1</h3>
+<h4 data-translate="_uploadSbv">Upload sbv File</h4>
+<div class="custom-file">
+  <input id="sbvupload" type="file" class="custom-file-input" accept=".sbv" required>
+  <label class="custom-file-label" for="sbvupload" data-translate="_subFileChoose">Choose SBV file(Subtitle file from YouTube)</label>
+  <div id="noFile" class="invalid-feedback" data-translate="_subFilePlease">Please choose a SBV file</div>
+</div>
