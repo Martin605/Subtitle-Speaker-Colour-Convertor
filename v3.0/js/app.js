@@ -124,7 +124,7 @@ function appOnLoad() {
   $('#StepColourSetting').load('html_part/app/3_colour_setting');
   $('#StepPreview').load('html_part/app/4_preview_new');
   $('#StepDownload').load('html_part/app/5a_download');
-  $('#StepUpload').load('html_part/app/5b_upload');
+  $('#StepUpload').load('html_part/app/5b_upload').ready(onLoad());
   window.addEventListener('message',function(e){
     if (e.data[0] == "Height") {
       $("#"+e.data[1]).css("height",e.data[2])
@@ -148,7 +148,7 @@ function appOnLoad() {
       }
     }
   },false);
-  $(function() {onLoad();});
+  // $(function() {onLoad();});
 } 
 // step 1
 function uploadSBVStep() {

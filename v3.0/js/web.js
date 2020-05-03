@@ -10,7 +10,7 @@ function onLoad() {
                 $('langList').append(`<a class="nav-link" href="#" onClick="setLang(${langList[i]});">${data.name}</a>`)
             })
         }}
-    navBar().then(setLang(lang));
+    navBar();
 }
   
 async function navBar() {
@@ -19,8 +19,10 @@ async function navBar() {
     if (current=="") {current="index"};
     $('#navBar').load("html_part/navBar",
         function() {
+            var lang = localStorage.getItem('lang') || navigator.language || navigator.userLanguage; 
             $(`#${current}nav`).append('<span class="sr-only">(current)</span>')
             $(`#${current}nav`).parent().addClass('active')
+            setLang(lang)
         }
     )
 }
