@@ -148,7 +148,7 @@ function appOnLoad() {
       }
     }
   },false);
-  onLoad();
+  $(function() {onLoad();});
 } 
 // step 1
 function uploadSBVStep() {
@@ -272,7 +272,9 @@ function loadJSON() {
       prepareJson = JSON.parse(fileLoadedEvent.target.result);
       let keys = Object.keys(prepareJson);
       if (prepareJson["default"]) {
-        document.getElementById("colourCode0").value = prepareJson["default"];}
+        document.getElementById("colourCode0").value = prepareJson["default"];
+        $(`#colourPreview0`).css("color",`#${prepareJson["default"].toUpperCase()}`);
+        $(`#colourCode0`).val(prepareJson["default"]);  }
       for (let i = 1; i < keys.length; i++) {
           let key = keys[i];
           addColour(key,prepareJson[key]);

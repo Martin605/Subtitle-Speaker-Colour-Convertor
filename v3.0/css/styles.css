@@ -44,8 +44,7 @@ pre {
     max-width: 100%;
     height: calc(100vw/10*3);
 }
-.colourPreview {background-color: #343a40}
-.colourPickerBtn {cursor: pointer;}
+.colourPreview {background-color: #343a40;cursor: pointer;}
 i {vertical-align: text-bottom;}
 ::-webkit-scrollbar-track {
     background-color: #ffffff;

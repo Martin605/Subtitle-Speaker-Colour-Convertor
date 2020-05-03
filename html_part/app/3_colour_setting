@@ -27,7 +27,7 @@
       &nbsp;&nbsp;
       <input id="colorPicker0" value="#FFFFFF" class="colorPicker" type="color">
       &nbsp;&nbsp;
-      <span id="colourPreview0" class="colourPreview form-control" style="color:#${colourCode};">Preview 預覽</span>
+      <span id="colourPreview0" class="colourPreview form-control" style="color:#FFFFFF;">Preview 預覽</span>
       &nbsp;&nbsp;
       <button class="btn btn-secondary" onclick="addNewColour()"><i class="material-icons">add</i></button>
     </div>
